@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Config Snapshot for Salesforce Data 360</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <!-- no in-panel header: Chrome's side panel title bar already shows the extension's name and icon -->
+  <main>
+    <section class="card" id="org" aria-live="polite">
+      <div class="org-head">
+        <span class="dot" id="org-dot"></span>
+        <div class="org-text">
+          <div class="org-title" id="org-title">Looking for a Salesforce tab…</div>
+          <div class="org-sub" id="org-sub"></div>
+        </div>
+        <button class="icon-btn" id="refresh" title="Reconnect" aria-label="Reconnect">↻</button>
+      </div>
+      <dl class="org-facts" id="org-facts" hidden></dl>
+      <p class="hint" id="org-hint" hidden></p>
+    </section>
+
+    <section class="card" id="setup" hidden>
+      <label class="field">
+        <span>Data space</span>
+        <select id="dataspace"></select>
+      </label>
+
+      <div class="modules-head">
+        <span>Modules</span>
+        <span class="links"><button class="link" id="all">All</button> · <button class="link" id="none">None</button></span>
+      </div>
+      <ul class="modules" id="modules"></ul>
+
+      <details class="advanced">
+        <summary>Options</summary>
+        <label class="check" title="Replaces literal values in segment and activation filters, static activation data and SQL string literals with &lt;redacted&gt;. Objects, fields and logic are kept."><input type="checkbox" id="redact"> Redact filter values (before sharing outside your team)</label>
+        <label class="check" title="Lets you re-process the export with a newer version later, or attach it to a bug report. About 3x larger. Not available with redaction."><input type="checkbox" id="include-raw"> Include raw API responses (for re-processing / bug reports)</label>
+        <label class="field inline">
+          <span>Parallel requests</span>
+          <select id="concurrency">
+            <option value="1">1</option><option value="2">2</option><option value="4" selected>4</option><option value="6">6</option>
+          </select>
+        </label>
+      </details>
+
+      <div class="estimate" id="estimate"></div>
+      <button class="primary" id="export">Export</button>
+    </section>
+
+    <section class="card" id="run" hidden aria-live="polite">
+      <div class="run-head">
+        <strong id="run-title">Exporting…</strong>
+        <span class="muted" id="run-counter"></span>
+      </div>
+      <div class="bar" id="bar-track" role="progressbar" aria-label="Export progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar-fill" id="bar"></div></div>
+      <div class="muted small" id="run-step"></div>
+      <ul class="run-list" id="run-list"></ul>
+      <div class="run-actions">
+        <button class="secondary" id="cancel">Cancel</button>
+        <button class="secondary" id="download-again" hidden>Download again</button>
+        <button class="primary" id="new-export" hidden>New export</button>
+      </div>
+      <details class="warnings" id="warnings" hidden>
+        <summary id="warnings-title"></summary>
+        <ul id="warnings-list"></ul>
+      </details>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot-note">Read-only (GET). The session stays in this browser; nothing is sent elsewhere.</p>
+    <div class="foot-author">
+      <a class="author" href="https://szymonlewandowski.pl" target="_blank" rel="noopener noreferrer" title="Szymon Lewandowski">
+        <img src="../icons/author.png" alt="" width="18" height="18">
+        <span>szymonlewandowski.pl</span>
+      </a>
+      <span class="release"><span class="pill" title="Beta: features and the export format may still change">BETA</span><span class="ver" id="version"></span></span>
+    </div>
+  </footer>
+  <script type="module" src="panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Config Snapshot for Salesforce Data 360",
+  "short_name": "Snapshot",
+  "version": "0.1.0",
+  "version_name": "0.1.0 beta",
+  "description": "Unofficial. Read-only snapshot of your Salesforce Data 360 (Data Cloud) configuration – data model, streams, mappings, segments, activations – as JSON.",
+  "minimum_chrome_version": "116",
+  "permissions": ["sidePanel", "cookies"],
+  "host_permissions": [
+    "https://*.my.salesforce.com/*",
+    "https://*.lightning.force.com/*",
+    "https://*.my.salesforce-setup.com/*"
+  ],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "side_panel": { "default_path": "panel/panel.html" },
+  "action": {
+    "default_title": "Config Snapshot for Salesforce Data 360",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png" }
+  },
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+}

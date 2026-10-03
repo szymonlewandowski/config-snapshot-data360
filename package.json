@@ -1,0 +1,19 @@
+{
+  "name": "config-snapshot-data360",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome extension: read-only snapshot of a Salesforce Data 360 org's configuration, downloaded as JSON.",
+  "author": "Szymon Lewandowski (https://szymonlewandowski.pl)",
+  "license": "EUPL-1.2",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "build": "node scripts/build.js",
+    "serve": "node dev/serve.js 8360",
+    "icons": "node scripts/make-icons.js",
+    "load-test": "node scripts/load-test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
